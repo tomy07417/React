@@ -1,0 +1,21 @@
+{
+  "name": "react",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "main": "index.js",
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {
+    "@s-ui/mono": "^2.42.0",
+    "react": "18.2.0"
+  },
+  "scripts": {
+    "co": "sui-mono commit",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

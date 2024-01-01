@@ -1,0 +1,77 @@
+body {
+    background: #1c1b25;
+    font-family: system-ui;
+    display: grid;
+    place-content: center;
+    min-height: 100vh;
+}
+
+
+.twitter-card-section {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    justify-content: space-between;
+}
+
+.twitter-card-header{
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.twitter-card-avatar {
+    height: 50px;
+    border-radius: 1000px;
+}
+
+.twitter-card-info {
+    display: flex;
+    flex-direction: column;
+    padding-left: 5px;
+}
+
+.twitter-card-follow {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.twitter-card-username {
+    color: #8e8e92;
+}
+
+.twitter-card-button-unfollow {
+    background-color: #fff;
+    border-radius: 500px;
+    padding-inline: 18px;
+    height: 35px;
+    cursor: pointer;
+    font-family: System-ui;
+    font-size: 17px;
+    font-weight: 500;
+}
+.twitter-card-button-follow{
+    background-color: #1c1b25;
+    color: #fff;
+    border-radius: 500px;
+    padding-inline: 18px;
+    height: 35px;
+    cursor: pointer;
+    font-family: System-ui;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.twitter-card-button-unfollow:hover {
+    background-color: #1c1b25;
+    border-color: #fff;
+    color: #fff;
+}
+
+.twitter-card-button-follow:hover {
+    background-color: rgb(218, 118, 118);
+    border-color: red;
+    color: red;
+}

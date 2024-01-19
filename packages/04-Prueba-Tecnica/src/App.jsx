@@ -12,18 +12,19 @@ function App() {
   useEffect(() => {
     fetch(URL_API_FACTS)
       .then(response => response.json())
-      .then(data => {
-        setFact(data.fact)
-        const word = data.fact.split(' ',3).join()
-        fetch(`https://cataas.com/cat/says/${word}?fontSize=50&fontColor=red&json=true`)
-          .then(response => response.json())
-          .then(data => {
-            const {_id} = data
-            setUrlCat(`/cat/${_id}/says/${word}`)
-          })
-      })
-      
+      .then(data => setFact(data.fact))
   }, [])
+
+  useEffect(() => {
+    if(!fact) return
+    const firstThreeWords = fact.split(' ', 3).join()
+    fetch(`https://cataas.com/cat/says/${firstThreeWords}?fontSize=50&fontColor=red&json=true`)
+      .then(response => response.json())
+      .then(data => {
+        const {_id} = data
+        setUrlCat(`/cat/${_id}/says/${firstThreeWords}`)
+      })
+  }, [fact])
 
   return (
     <>

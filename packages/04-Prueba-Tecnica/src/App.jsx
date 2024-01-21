@@ -1,36 +1,32 @@
-import { useEffect } from 'react'
-import { useState } from 'react'
+import { useFact } from './hooks/useFact'
+import { useCatImage } from './hooks/useCatImage'
 import './App.css'
 
-const URL_API_FACTS = "https://catfact.ninja/fact"
 const URL_CAT_ROOT = "https://cataas.com"
 
 function App() {
-  const [fact, setFact] = useState(false)
-  const [urlCat, setUrlCat] = useState(false)
+  const [fact, refreshFact] = useFact()
+  const {urlCat} = useCatImage({fact})
 
-  useEffect(() => {
-    fetch(URL_API_FACTS)
-      .then(response => response.json())
-      .then(data => setFact(data.fact))
-  }, [])
-
-  useEffect(() => {
-    if(!fact) return
-    const firstThreeWords = fact.split(' ', 3).join()
-    fetch(`https://cataas.com/cat/says/${firstThreeWords}?fontSize=50&fontColor=red&json=true`)
-      .then(response => response.json())
-      .then(data => {
-        const {_id} = data
-        setUrlCat(`/cat/${_id}/says/${firstThreeWords}`)
-      })
-  }, [fact])
-
+  const handleClick = async () => {
+    refreshFact()
+  }
   return (
     <>
       <h1>Prueba Tecnica</h1>
-      {fact && <p>{fact}</p>}
-      {urlCat && <img src={URL_CAT_ROOT+urlCat}/>}
+      <main style={{
+        'display':'flex',
+        'flexDirection':'row'
+      }}>
+        {fact && <p style={{
+          'width':500
+        }}>{fact}</p>}
+        {urlCat && <img src={URL_CAT_ROOT+urlCat} style={{
+          'height':300,
+          'width':300
+        }}/>}
+      </main>
+      <button onClick={handleClick}>Cambiar Fact</button>
     </>
   )
 }
